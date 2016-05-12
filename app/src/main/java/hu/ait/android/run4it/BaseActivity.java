@@ -39,6 +39,7 @@ public class BaseActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -56,27 +57,36 @@ public class BaseActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_profInfo) {
-            Intent profIntent = new Intent(BaseActivity.this, ProfileActivity.class);
-            profIntent.putExtra(KEY_PROF_INTENT,INTENT_PROF_MAIN_INFO);
-            startActivity(profIntent);
-        } else if (id == R.id.nav_stats) {
-            Intent profIntent = new Intent(BaseActivity.this, ProfileActivity.class);
-            profIntent.putExtra(KEY_PROF_INTENT,INTENT_PROF_STATS);
-            startActivity(profIntent);
-        } else if (id == R.id.nav_goals) {
-            Intent profIntent = new Intent(BaseActivity.this, ProfileActivity.class);
-            profIntent.putExtra(KEY_PROF_INTENT,INTENT_PROF_GOALS);
-            startActivity(profIntent);
-        } else if (id == R.id.nav_competitions) {
-
-        } else if (id == R.id.nav_objectives) {
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_numPoints) {
-            // do nothing (unclickable), just display points here
+        Intent nextPageIntent;
+        switch(id) {
+            case R.id.nav_profInfo:
+                nextPageIntent = new Intent(BaseActivity.this, ProfileActivity.class);
+                nextPageIntent.putExtra(KEY_PROF_INTENT, INTENT_PROF_MAIN_INFO);
+                startActivity(nextPageIntent);
+                break;
+            case R.id.nav_stats:
+                nextPageIntent = new Intent(BaseActivity.this, ProfileActivity.class);
+                nextPageIntent.putExtra(KEY_PROF_INTENT, INTENT_PROF_STATS);
+                startActivity(nextPageIntent);
+                break;
+            case R.id.nav_goals:
+                nextPageIntent = new Intent(BaseActivity.this, ProfileActivity.class);
+                nextPageIntent.putExtra(KEY_PROF_INTENT,INTENT_PROF_GOALS);
+                startActivity(nextPageIntent);
+                break;
+            case R.id.nav_competitions:
+                nextPageIntent = new Intent(BaseActivity.this, CompetitionsActivity.class);
+                startActivity(nextPageIntent);
+                break;
+            case R.id.nav_objectives:
+                nextPageIntent = new Intent(BaseActivity.this, ObjectivesActivity.class);
+                startActivity(nextPageIntent);
+                break;
+            case R.id.nav_settings:
+                // do something with settings
+                break;
+            default:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

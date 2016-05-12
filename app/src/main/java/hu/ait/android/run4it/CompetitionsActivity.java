@@ -5,28 +5,25 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 
+import hu.ait.android.run4it.adapter.CompPagerAdapter;
 import hu.ait.android.run4it.adapter.ProfPagerAdapter;
 
-public class ProfileActivity extends BaseActivity {
+public class CompetitionsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_profile);
+        //setContentView(R.layout.activity_competitions);
 
         LayoutInflater inflater = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.activity_profile, null, false);
+        View contentView = inflater.inflate(R.layout.activity_competitions, null, false);
         drawer.addView(contentView, 0);
 
-        ProfPagerAdapter adapter = new ProfPagerAdapter(this,getSupportFragmentManager());
-        ViewPager pager = (ViewPager) findViewById(R.id.profViewPager);
+        CompPagerAdapter adapter = new CompPagerAdapter(this,getSupportFragmentManager());
+        ViewPager pager = (ViewPager) findViewById(R.id.compViewPager);
         pager.setAdapter(adapter);
-
-        int fragIndex = getIntent().getIntExtra(BaseActivity.KEY_PROF_INTENT,0);
-        pager.setCurrentItem(fragIndex);
     }
 }
