@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import hu.ait.android.run4it.R;
 
@@ -17,6 +19,39 @@ public class ProfStatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_prof_stats, null);
+
+        final Button btnDaily = (Button) rootView.findViewById(R.id.btnDailyStats);
+        final Button btnWeekly = (Button) rootView.findViewById(R.id.btnWeeklyStats);
+        final Button btnMonthly = (Button) rootView.findViewById(R.id.btnMonthlyStats);
+        final TextView tvHeader = (TextView) rootView.findViewById(R.id.tvHeader);
+
+        btnDaily.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                tvHeader.setText("Daily stats for today");
+                btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
+                btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+                btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+            }
+        });
+        btnWeekly.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                tvHeader.setText("Daily stats for past 7 days");
+                btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+                btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
+                btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+            }
+        });
+        btnMonthly.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                tvHeader.setText("Daily stats for this Month");
+                btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+                btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+                btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
+            }
+        });
 
         return rootView;
     }
