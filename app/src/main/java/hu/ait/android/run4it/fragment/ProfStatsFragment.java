@@ -24,20 +24,25 @@ public class ProfStatsFragment extends Fragment {
         final Button btnWeekly = (Button) rootView.findViewById(R.id.btnWeeklyStats);
         final Button btnMonthly = (Button) rootView.findViewById(R.id.btnMonthlyStats);
         final TextView tvHeader = (TextView) rootView.findViewById(R.id.tvHeader);
+        TextView tvCalsBurned = (TextView) rootView.findViewById(R.id.tvCalsBurned);
+        TextView tvMilesRun = (TextView) rootView.findViewById(R.id.tvMilesRun);
+        TextView tvObjectivesComplete = (TextView) rootView.findViewById(R.id.tvObjectivesCompleted);
+        TextView tvPointsEarned = (TextView) rootView.findViewById(R.id.tvPointsEarned);
 
         btnDaily.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                tvHeader.setText("Daily stats for today");
+                tvHeader.setText("Stats for today");
                 btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
                 btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
                 btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
+
             }
         });
         btnWeekly.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                tvHeader.setText("Daily stats for past 7 days");
+                tvHeader.setText("Stats for past 7 days");
                 btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
                 btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
                 btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
@@ -46,7 +51,7 @@ public class ProfStatsFragment extends Fragment {
         btnMonthly.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                tvHeader.setText("Daily stats for this Month");
+                tvHeader.setText("Stats for this Month");
                 btnDaily.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
                 btnWeekly.setBackground(getResources().getDrawable(R.drawable.my_button_bg));
                 btnMonthly.setBackground(getResources().getDrawable(R.drawable.my_button_bg_selected));
