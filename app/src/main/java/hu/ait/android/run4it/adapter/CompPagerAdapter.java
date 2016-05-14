@@ -9,9 +9,6 @@ import hu.ait.android.run4it.fragment.CompActiveFragment;
 import hu.ait.android.run4it.fragment.CompDoneFragment;
 
 
-/**
- * Created by nathanmajumder on 5/12/16.
- */
 public class CompPagerAdapter extends FragmentPagerAdapter {
     Context context;
 
