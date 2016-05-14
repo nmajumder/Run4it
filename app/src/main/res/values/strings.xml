@@ -5,4 +5,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="workout_measure_array">
+        <item>Mile(s)</item>
+        <item>Calorie(s)</item>
+    </string-array>
+    <string-array name="time_frame_array">
+        <item>Day(s)</item>
+        <item>Week(s)</item>
+        <item>Month(s)</item>
+    </string-array>
 </resources>
