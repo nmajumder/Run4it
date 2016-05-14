@@ -10,9 +10,6 @@ import hu.ait.android.run4it.fragment.ProfGoalsFragment;
 import hu.ait.android.run4it.fragment.ProfMainInfoFragment;
 import hu.ait.android.run4it.fragment.ProfStatsFragment;
 
-/**
- * Created by nathanmajumder on 5/12/16.
- */
 public class ProfPagerAdapter extends FragmentPagerAdapter {
     Context context;
 
