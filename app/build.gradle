@@ -26,4 +26,9 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.github.satyan:sugar:1.4'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.backendless:backendless:3.0.11'
+
+
 }
