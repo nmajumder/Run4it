@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity{
                     public void handleResponse(BackendlessUser response) {
                         Toast.makeText(LoginActivity.this,
                                 "REGISTRATION OK", Toast.LENGTH_SHORT).show();
+                        LogIn();
                     }
 
                     @Override
@@ -102,25 +103,29 @@ public class LoginActivity extends AppCompatActivity{
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Backendless.UserService.login(
-                        etEmail.getText().toString(),
-                        etPassword.getText().toString(),
-                        new AsyncCallback<BackendlessUser>() {
-                            @Override
-                            public void handleResponse(BackendlessUser response) {
-                                startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                            }
-
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-                                Toast.makeText(LoginActivity.this,
-                                        "Error: " + fault.getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                );
+                LogIn();
             }
         });
+    }
+
+    private void LogIn() {
+        Backendless.UserService.login(
+            etEmail.getText().toString(),
+            etPassword.getText().toString(),
+            new AsyncCallback<BackendlessUser>() {
+                @Override
+                public void handleResponse(BackendlessUser response) {
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                }
+
+                @Override
+                public void handleFault(BackendlessFault fault) {
+                    Toast.makeText(LoginActivity.this,
+                            "Error: " + fault.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        );
     }
 }
 
