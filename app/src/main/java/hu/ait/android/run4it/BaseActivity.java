@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import hu.ait.android.run4it.adapter.ProfPagerAdapter;
+import hu.ait.android.run4it.network.FitbitAPI;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +42,12 @@ public class BaseActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Retrofit retrofit = new Retrofit.Builder().
+                baseUrl("https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227LZV&redirectUri=&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800").
+                addConverterFactory(GsonConverterFactory.create()).
+                build();
+        final FitbitAPI fitbitAPI = retrofit.create(FitbitAPI.class);
 
     }
 
