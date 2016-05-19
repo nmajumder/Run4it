@@ -58,8 +58,6 @@ public class ProfGoalsFragment extends Fragment {
             }
         });
 
-        goalRecyclerAdapter.removeAllGoals();
-
         return rootView;
     }
 

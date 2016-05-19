@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity{
 
         Backendless.initApp(this,
                 "A94E262B-238C-C591-FFC2-7311BC2CEC00",
-                "5A91BE01 - A040-9159-FFB7-FF93974F9000",
+                "5A91BE01-A040-9159-FFB7-FF93974F9000",
                 "v1");
 
         // Set up the login form.
@@ -71,6 +71,14 @@ public class LoginActivity extends AppCompatActivity{
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etEmail.getText().toString().isEmpty()){
+                    etEmail.setError("This field cannot be empty!");
+                    return;
+                }
+                if (etPassword.getText().toString().isEmpty()){
+                    etPassword.setError("This field cannot be empty!");
+                    return;
+                }
                 BackendlessUser newUser = new BackendlessUser();
                 newUser.setEmail(etEmail.getText().toString());
                 newUser.setPassword(etPassword.getText().toString());
