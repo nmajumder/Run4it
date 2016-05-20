@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.backendless.Backendless;
+
 import hu.ait.android.run4it.adapter.ProfPagerAdapter;
 import hu.ait.android.run4it.network.FitbitAPI;
 import retrofit2.Retrofit;
@@ -31,6 +33,12 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+        Backendless.initApp(this,
+                "A94E262B-238C-C591-FFC2-7311BC2CEC00",
+                "5A91BE01-A040-9159-FFB7-FF93974F9000",
+                "v1");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,7 +52,7 @@ public class BaseActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227LZV&redirectUri=&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800").
+                baseUrl("https://www.fitbit.com/").
                 addConverterFactory(GsonConverterFactory.create()).
                 build();
         final FitbitAPI fitbitAPI = retrofit.create(FitbitAPI.class);
