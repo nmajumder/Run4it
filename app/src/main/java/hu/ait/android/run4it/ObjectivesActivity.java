@@ -22,16 +22,19 @@ import hu.ait.android.run4it.adapter.TouchHelperCallback;
 import hu.ait.android.run4it.data.Objective;
 
 public class ObjectivesActivity extends BaseActivity {
-    TextView top;
+
     ObjectivesAdapter objectRecyclerAdapter;
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_objectives);
+        //setContentView(R.layout.activity_objectives);
 
-        top = (TextView) findViewById(R.id.tvTop);
-        //comment change
+        LayoutInflater inflater = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_objectives, null, false);
+        drawer.addView(contentView, 0);
+
 
         objectRecyclerAdapter = new ObjectivesAdapter(this);
         recyclerView = (RecyclerView) findViewById(R.id.objectivesRecyclerView);
