@@ -10,8 +10,8 @@ import retrofit2.http.Query;
  * Created by Jwatto01 on 5/18/16.
  */
 public interface FitbitAPI {
-    @GET("")
-    Call<AccessToken> getAccessToken();
+    //@GET("")
+    //Call<AccessToken> getAccessToken();
 /*
     @Get(AuthorizationResult)
     @GET("user")
@@ -26,7 +26,7 @@ public interface FitbitAPI {
 }
 
 
-Call<WeatherResult> weatherQuery = weatherAPI.getWeather(cityName,getString(R.string.units),
+/*Call<WeatherResult> weatherQuery = weatherAPI.getWeather(cityName,getString(R.string.units),
         getString(R.string.APIkey));
 
 
@@ -53,4 +53,4 @@ public void onFailure(Call<WeatherResult> call, Throwable t) {
         tvCityName.setText(getString(R.string.error)+t.getMessage());
 
         }
-        });
+        });*/
