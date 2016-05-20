@@ -31,6 +31,7 @@ public class ObjectivesActivity extends BaseActivity {
         setContentView(R.layout.activity_objectives);
 
         top = (TextView) findViewById(R.id.tvTop);
+        //comment change
 
         objectRecyclerAdapter = new ObjectivesAdapter(this);
         recyclerView = (RecyclerView) findViewById(R.id.objectivesRecyclerView);
