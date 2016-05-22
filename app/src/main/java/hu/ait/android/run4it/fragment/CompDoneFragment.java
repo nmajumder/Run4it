@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import hu.ait.android.run4it.R;
 
-/**
- * Created by nathanmajumder on 5/12/16.
- */
 public class CompDoneFragment extends Fragment {
     @Nullable
     @Override

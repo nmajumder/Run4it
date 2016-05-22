@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import hu.ait.android.run4it.R;
 
-/**
- * Created by nathanmajumder on 5/12/16.
- */
 public class ProfStatsFragment extends Fragment {
 
     Button btnDaily;
