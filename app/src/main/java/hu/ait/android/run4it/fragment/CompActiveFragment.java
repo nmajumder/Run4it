@@ -21,9 +21,6 @@ import hu.ait.android.run4it.adapter.CompetitionAdapter;
 import hu.ait.android.run4it.adapter.TouchHelperCallback;
 import hu.ait.android.run4it.data.Competition;
 
-/**
- * Created by nathanmajumder on 5/12/16.
- */
 public class CompActiveFragment extends Fragment {
 
     CompetitionAdapter compRecyclerAdapter;
@@ -49,13 +46,28 @@ public class CompActiveFragment extends Fragment {
             @Override
             public void handleResponse(BackendlessCollection<Competition> response) {
                 Iterator<Competition> objIterator = response.getCurrentPage().iterator();
-                while (objIterator.hasNext()){
+                while (objIterator.hasNext()) {
                     Competition obj = objIterator.next();
+
+                    if (obj.getBuyin() == 300) {
+                        obj.setWinnings1st(1450);
+                        obj.setWinnings2nd(1150);
+                        obj.setWinnings3rd(900);
+                    } else if (obj.getBuyin() == 450) {
+                        obj.setWinnings1st(1800);
+                        obj.setWinnings2nd(1400);
+                        obj.setWinnings3rd(1100);
+                        obj.setEntered(true);
+                    } else if (obj.getBuyin() == 700) {
+                        obj.setWinnings1st(4000);
+                        obj.setWinnings2nd(3000);
+                        obj.setWinnings3rd(2000);
+                    }
+
                     compRecyclerAdapter.addComp(obj);
                 }
             }
         });
-
 
         return rootView;
     }

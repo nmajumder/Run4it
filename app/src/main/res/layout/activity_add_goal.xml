@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="#808080"
     tools:context="hu.ait.android.run4it.AddGoalActivity">
 
     <LinearLayout
@@ -74,13 +75,19 @@
             android:id="@+id/btnCancelGoal"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginRight="3dp"
             android:layout_height="match_parent"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/darkGrayText"
             android:text="Cancel"/>
         <Button
             android:id="@+id/btnSaveGoal"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginLeft="3dp"
             android:layout_height="match_parent"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/darkGrayText"
             android:text="Save"/>
     </LinearLayout>
 

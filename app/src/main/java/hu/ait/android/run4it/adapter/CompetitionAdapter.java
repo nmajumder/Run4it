@@ -1,6 +1,8 @@
 package hu.ait.android.run4it.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,16 +11,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import hu.ait.android.run4it.CompDetailsActivity;
 import hu.ait.android.run4it.R;
 import hu.ait.android.run4it.data.Competition;
 
-/**
- * Created by Jwatto01 on 5/20/16.
- */
 public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.ViewHolder>
         implements TouchHelperAdapter{
 
@@ -38,13 +40,53 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
     }
 
     @Override
-    public void onBindViewHolder(CompetitionAdapter.ViewHolder holder, int position) {
-        holder.tvBuyin.setText(String.valueOf(comps.get(position).getBuyin()));
+    public void onBindViewHolder(final CompetitionAdapter.ViewHolder holder, final int position) {
         holder.compName.setText(comps.get(position).getCompName());
+        if (comps.get(position).isEntered()) {
+            holder.btnEnter.setText("Withdraw");
+            holder.btnEnter.setBackgroundResource(R.drawable.withdraw_button_border);
+            holder.btnEnter.setTextColor(Color.parseColor("#FFFFFF"));
+        } else {
+            holder.btnEnter.setText("Enter");
+            holder.btnEnter.setBackgroundResource(R.drawable.enter_button_border);
+            holder.btnEnter.setTextColor(Color.parseColor("#616161"));
+        }
         holder.btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo incremement users entered, switch button to withdraw, and upadate competitor list
+                //todo incremement users entered, switch button to withdraw, and update competitor list
+                if (!(comps.get(position).isEntered())) {
+                    comps.get(position).setEntered(true);
+                    holder.btnEnter.setText("Withdraw");
+                    holder.btnEnter.setBackgroundResource(R.drawable.withdraw_button_border);
+                    holder.btnEnter.setTextColor(Color.parseColor("#FFFFFF"));
+                } else {
+                    comps.get(position).setEntered(false);
+                    holder.btnEnter.setText("Enter");
+                    holder.btnEnter.setBackgroundResource(R.drawable.enter_button_border);
+                    holder.btnEnter.setTextColor(Color.parseColor("#616161"));
+                }
+            }
+        });
+        holder.btnDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // todo show details fragment
+                Competition comp = comps.get(position);
+                Intent showDetailsIntent = new Intent(context, CompDetailsActivity.class);
+
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_NAME, comp.getCompName());
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_DESCRIP, comp.getDescription());
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_BUYIN, comp.getBuyin());
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_WINNINGS1, comp.getWinnings1st());
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_WINNINGS2, comp.getWinnings2nd());
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_WINNINGS3, comp.getWinnings3rd());
+
+                String beginDate = comp.getBegin().toString();
+                String endDate = comp.getEnd().toString();
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_BEGIN_DATE, beginDate);
+                showDetailsIntent.putExtra(CompDetailsActivity.KEY_COMP_END_DATE, endDate);
+                context.startActivity(showDetailsIntent);
             }
         });
     }
@@ -86,16 +128,14 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvBuyin;
         TextView compName;
         Button btnEnter;
+        Button btnDetails;
         public ViewHolder(View itemView) {
             super(itemView);
-
-
-            tvBuyin = (TextView) itemView.findViewById(R.id.tvBuyIn);
             compName = (TextView) itemView.findViewById(R.id.tvCompName);
-            btnEnter = (Button) itemView.findViewById(R.id.btnEnter);
+            btnDetails = (Button) itemView.findViewById(R.id.btnCompInfo);
+            btnEnter = (Button) itemView.findViewById(R.id.btnCompEnter);
         }
     }
 }

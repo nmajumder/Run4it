@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorButtonSelected">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorTextFields">#4CAF50</color>
+    <!--<color name="colorPrimary">#26A69A</color>
+    <color name="colorButtonSelected">#009688</color>
+    <color name="colorPrimaryDark">#004D40</color>-->
+    <color name="colorPrimary">#9DCB3B</color>
+    <color name="colorButtonSelected">#7CB342</color>
+    <color name="colorPrimaryDark">#33691E</color>
+    <color name="colorAccent">#0F91D0</color>
+    <color name="colorTextFields">#0F91D0</color>
+    <color name="darkGrayText">#263238</color>
+    <color name="darkGray">#616161</color>
+    <color name="lightGray">#DDDDDD</color>
+    <color name="lightBlueTint">#E1F5FE</color>
 </resources>

@@ -31,7 +31,12 @@
             android:icon="@drawable/settings"
             android:title="Settings"/>
     </group>
-    <item
-        android:id="@+id/nav_numPoints"
-        android:title="Number of Points"/>
+    <item android:title="My Points">
+        <menu>
+            <item
+                android:id="@+id/nav_numPoints"
+                android:title="3400 Points">
+            </item>
+        </menu>
+    </item>
 </menu>

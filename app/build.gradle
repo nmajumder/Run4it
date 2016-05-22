@@ -29,6 +29,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.backendless:backendless:3.0.11'
-
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
 
 }

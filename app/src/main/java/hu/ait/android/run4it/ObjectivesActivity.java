@@ -54,6 +54,9 @@ public class ObjectivesActivity extends BaseActivity {
                 Iterator<Objective> objIterator = response.getCurrentPage().iterator();
                 while (objIterator.hasNext()){
                     Objective obj = objIterator.next();
+                    if (obj.getPoints() == 600) {
+                        obj.setCompleted(true);
+                    }
                     objectRecyclerAdapter.addObjective(obj);
                 }
             }

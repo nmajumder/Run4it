@@ -16,6 +16,9 @@
         <item>Month(s)</item>
     </string-array>
     <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_competitions">Competitions</string>
+    <string name="title_activity_objectives">Objectives</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
