@@ -16,9 +16,6 @@ import java.util.List;
 import hu.ait.android.run4it.R;
 import hu.ait.android.run4it.data.Objective;
 
-/**
- * Created by Jwatto01 on 5/20/16.
- */
 public class ObjectivesAdapter extends RecyclerView.Adapter<ObjectivesAdapter.ViewHolder>
         implements TouchHelperAdapter {
 
@@ -42,6 +39,11 @@ public class ObjectivesAdapter extends RecyclerView.Adapter<ObjectivesAdapter.Vi
     @Override
     public void onBindViewHolder(ObjectivesAdapter.ViewHolder holder, int position) {
         holder.cbObjectiveCompleted.setClickable(false);
+        if (objectives.get(position).isCompleted()) {
+            holder.cbObjectiveCompleted.setChecked(true);
+        } else {
+            holder.cbObjectiveCompleted.setChecked(false);
+        }
         String objName = objectives.get(position).getObjectiveName();
         int pointValue = objectives.get(position).getPoints();
         holder.tvObjectiveName.setText(objName);
